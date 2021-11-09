@@ -1,0 +1,62 @@
+import random
+e = input('validador de cpf:\n1-validar\n2-fazer\n3-gerar')
+conto1,conto2,res1,res2,cpf = 0,0,0,0,''
+if e == '1':
+    cpf = input('digite o cpf só números: ')
+    sequencia = cpf == cpf[0]*11
+    while not sequencia:
+        if len(cpf) > 11 or not cpf.isdigit():
+            cpf = input('digite um cpf válido: ')
+        else:
+            for i,n in enumerate(range(10,1,-1)):
+                conto1 += int(cpf[i]) * n
+            res1 = 11-(conto1%11)
+            if res1 > 9:
+                res1 = 0
+            if not cpf[-2] == str(res1):
+                print('cpf inválido')
+            for i,n in enumerate(range(11,1,-1)):
+                conto2 += int(cpf[i]) * n
+            res2 = 11-(conto2%11)
+            if res2 > 9:
+                res2 = 0
+            if not cpf[-1] == str(res2):
+                print('cpf inválido')
+    else:
+        print('sequência não pode!')
+if e == '2':
+    cpf = input('digite o cpf só números: ')
+    if len(cpf) > 9 or not cpf.isdigit():
+        cpf = input('digite um cpf válido: ')
+    else:
+        for i,n in enumerate(range(10,1,-1)):
+            conto1 += int(cpf[i]) * n
+        res1 = 11-(conto1%11)
+        if res1 > 9:
+            res1 = 0
+        cpf = cpf + str(res1)
+        for i,n in enumerate(range(11,1,-1)):
+            conto2 += int(cpf[i]) * n
+        res2 = 11-(conto2%11)
+        if res2 > 9:
+            res2 = 0
+        cpf = cpf + str(res2)
+if e == '3':
+    s = 'n'
+    while s == 'n':
+        cpf = str(random.randint(100000000,999999999) )
+        for i,n in enumerate(range(10,1,-1)):
+            conto1 += int(cpf[i]) * n
+        res1 = 11-(conto1%11)
+        if res1 > 9:
+            res1 = 0
+        cpf += str(res1)
+        for i,n in enumerate(range(11,1,-1)):
+            conto2 += int(cpf[i]) * n
+        res2 = 11-(conto2%11)
+        if res2 > 9:
+            res2 = 0
+        cpf += str(res2) 
+        print(cpf)
+        s = input('sair? [S/N]')
+print(cpf)
