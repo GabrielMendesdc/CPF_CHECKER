@@ -1,5 +1,5 @@
 import random
-e = input('validador de cpf:\n1-validar\n2-fazer\n3-gerar')
+e = input('validador de cpf: \n1-validar \n2-fazer \n3-gerar ')
 conto1,conto2,res1,res2,cpf = 0,0,0,0,''
 if e == '1':
     cpf = input('digite o cpf só números: ')
